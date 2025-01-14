@@ -1,4 +1,9 @@
 import requests
+from dotenv import load_dotenv
+import os
+
+# Load .env file
+load_dotenv()
 
 # Your Lichess API token
 api_token = os.getenv("LICHESS_KEY")
