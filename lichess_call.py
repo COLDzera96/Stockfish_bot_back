@@ -1,7 +1,7 @@
 import requests
 
 # Your Lichess API token
-api_token = "lip_Y0c8hdqpMPl6OmqmF0yI"
+api_token = "lip_CrLmOJARpkc2D94durcz"
 
 # API URL for the user's ongoing games
 url = "https://lichess.org/api/account/playing"
@@ -34,3 +34,5 @@ def get_current_fen():
         if "nowPlaying" in data and data["nowPlaying"]:
             return data["nowPlaying"][0]["fen"]
     return None
+
+# fen of any game in the world on lichess

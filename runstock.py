@@ -12,7 +12,7 @@ def get_best_move_and_scores():
     active_color = parts[1]  # 'w' means White to move, 'b' means Black
 
     # Path to the Stockfish engine (adjust the path based on your system)
-    stockfish_path = r"C:\Users\space\Desktop\stockfish\stockfish.exe"  # Replace with your Stockfish binary path
+    stockfish_path = r"C:\Users\space\Desktop\bot - Web\stockfish\stockfish.exe"  # Replace with your Stockfish binary path
     engine = chess.engine.SimpleEngine.popen_uci(stockfish_path)
 
     # Find the best move for the active color
@@ -34,10 +34,17 @@ def get_best_move_and_scores():
     # Close the engine after use
     engine.quit()
 
-    return (f"Best move for {'black' if active_color == 'b' else 'white'}: {result.move}, "
-            f"Win for {'black' if active_color == 'b' else 'white'}: {winning_percentage_active}%, "
-            f"Win for {'white' if active_color == 'b' else 'black'}: {winning_percentage_other}%")
+    result_map = {
+        "best_move": result.move,
+        "active_color": "black" if active_color == 'b' else "white",
+        "winning_percentage_active": winning_percentage_active,
+        "winning_percentage_other": winning_percentage_other
+    }
+    return result_map
 
 if __name__ == "__main__":
-    best_move_text = get_best_move_and_scores()
-    print(best_move_text)
+    best_move_data = get_best_move_and_scores()
+    formatted_output = f"""Best move for {best_move_data['active_color']}: {best_move_data['best_move']},
+Win for {best_move_data['active_color']}: {best_move_data['winning_percentage_active']}%,
+Win for {'white' if best_move_data['active_color'] == 'black' else 'black'}: {best_move_data['winning_percentage_other']}%"""
+    print(formatted_output)
