@@ -1,7 +1,10 @@
 import requests
 
 # Your Lichess API token
-api_token = "lip_CrLmOJARpkc2D94durcz"
+api_token = os.getenv("LICHESS_KEY")
+
+if not api_token:
+    raise ValueError("LICHESS_API_TOKEN environment variable is not set.")
 
 # API URL for the user's ongoing games
 url = "https://lichess.org/api/account/playing"
