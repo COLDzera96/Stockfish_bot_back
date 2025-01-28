@@ -12,7 +12,7 @@ def get_best_move_and_scores():
     active_color = parts[1]  # 'w' means White to move, 'b' means Black
 
     # Path to the Stockfish engine (adjust the path based on your system)
-    stockfish_path = r"stockfish\stockfish.exe"  # Replace with your Stockfish binary path
+    stockfish_path = r"stockfish\stockfish-ubuntu-x86-64-avx2"  # Replace with your Stockfish binary path
     engine = chess.engine.SimpleEngine.popen_uci(stockfish_path)
 
     # Find the best move for the active color
