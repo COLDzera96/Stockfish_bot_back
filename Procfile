@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: web: bash postinstall.sh && gunicorn app:app
